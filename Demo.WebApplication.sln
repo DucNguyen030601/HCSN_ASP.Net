@@ -5,11 +5,15 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WebApplication.API", "Demo.WebApplication.API\Demo.WebApplication.API.csproj", "{F55FAB6A-265A-4789-A625-EA373331AC06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WebApplication.BL", "Demo.WebApplication.BL\Demo.WebApplication.BL.csproj", "{8D10FE14-D3AC-41E3-A286-E7DD03003E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WebApplication.BL", "Demo.WebApplication.BL\Demo.WebApplication.BL.csproj", "{8D10FE14-D3AC-41E3-A286-E7DD03003E9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WebApplication.DL", "Demo.WebApplication.DL\Demo.WebApplication.DL.csproj", "{75EA49BE-5E0E-4651-A80A-24FC646C413D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WebApplication.DL", "Demo.WebApplication.DL\Demo.WebApplication.DL.csproj", "{75EA49BE-5E0E-4651-A80A-24FC646C413D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WebApplication.Common", "Demo.WebApplication.Common\Demo.WebApplication.Common.csproj", "{65F3736F-9792-4266-A25B-D061B2444F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WebApplication.Common", "Demo.WebApplication.Common\Demo.WebApplication.Common.csproj", "{65F3736F-9792-4266-A25B-D061B2444F2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WebApplication.API.UnitTests", "Demo.WebApplication.API.UnitTests\Demo.WebApplication.API.UnitTests.csproj", "{30644157-83DB-4136-A09D-039D7B0BF733}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{3DCA2EC1-4D1A-4D0A-9279-05E3DD0A6E00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{65F3736F-9792-4266-A25B-D061B2444F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65F3736F-9792-4266-A25B-D061B2444F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65F3736F-9792-4266-A25B-D061B2444F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30644157-83DB-4136-A09D-039D7B0BF733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30644157-83DB-4136-A09D-039D7B0BF733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30644157-83DB-4136-A09D-039D7B0BF733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30644157-83DB-4136-A09D-039D7B0BF733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DCA2EC1-4D1A-4D0A-9279-05E3DD0A6E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCA2EC1-4D1A-4D0A-9279-05E3DD0A6E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCA2EC1-4D1A-4D0A-9279-05E3DD0A6E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCA2EC1-4D1A-4D0A-9279-05E3DD0A6E00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,21 +1,15 @@
 ﻿using Demo.WebApplication.API.lib;
+using Demo.WebApplication.BL.BaseBL;
+using Demo.WebApplication.Common.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebApplication.API.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FixedAssetCategoriesController : ControllerBase
+{ 
+    public class FixedAssetCategoriesController : BaseController<FixedAssetCategory>
     {
-        DBConfig db = new DBConfig();
-
-        [HttpGet]
-        public IActionResult GetFixedAssetCategories()
+        public FixedAssetCategoriesController(IBaseBL<FixedAssetCategory> baseBL) : base(baseBL)
         {
-            string sql = $"select * from fixed_asset_category";
-            var data = db.FixedAssetCategores(sql);
-            return StatusCode(200, data);
         }
     }
 }

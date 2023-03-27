@@ -1,4 +1,5 @@
 ﻿using Demo.WebApplication.Common.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Demo.WebApplication.Common.Entities
 {
@@ -11,7 +12,11 @@ namespace Demo.WebApplication.Common.Entities
         /// khoá chính
         /// </summary>
 
+        [Key]
         public Guid EmployeeId { get; set; }    
+
+        [Required(ErrorMessage ="Mã nhân viên không được để trống")]
+        [MaxLength(10,ErrorMessage ="Mã nhân viên phải ít nhất 10")]
         public string EmployeeCode { get; set; }
 
         public string EmployeeName { get; set; }

@@ -9,54 +9,26 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Demo.WebApplication.BL.BaseBL;
+using Demo.WebApplication.DL.BaseDL;
 
 namespace Demo.WebApplication.BL.FixedAssetBL
 {
-    public class FixedAssetBL : IFixedAssetBL
+    public class FixedAssetBL : BaseBL<FixedAsset>,IFixedAssetBL
     {
-        #region Field
-
-        private IFixedAssetDL _fixedAssetDL;
-
-        #endregion
-
-        #region Constuctor
-
-        public FixedAssetBL(IFixedAssetDL fixedAssetDL) 
+        public FixedAssetBL(IFixedAssetDL fixedAssetDL) : base(fixedAssetDL)
         {
-            _fixedAssetDL = fixedAssetDL;
+
         }
-        public List<FixedAsset> GetFixedAssetList()
-        {
-            List<FixedAsset>fixedAssets = _fixedAssetDL.GetFixedAssetList();
-
-            return fixedAssets;
-        }
-
-        #endregion
-
-        public int InsertFixedAsset(FixedAsset fixedAsset)
-        {
-            var validateResult = ValidateFixedAsset(fixedAsset);
-
-            var numberOfAffectedRows = _fixedAssetDL.InsertFixedAsset(fixedAsset);
-
-            return numberOfAffectedRows;
-        }
-
         /// <summary>
-        ///  Hàm kiểm tra validate
+        /// Hàm xử lý validate không dùng chung nếu muốn validata thay đổi
+        /// thì các lớp con kế thừa và thay đổi lại
         /// </summary>
-        /// <param name="fixedAsset"></param>
-        /// <returns></returns>
-        private ValidateResult ValidateFixedAsset(FixedAsset fixedAsset)
+        /// <param name="record">Bản ghi muốn validate</param>
+        /// <returns>Danh sách chuỗi bị lỗi</returns>
+        protected override List<string> ValidateCustom(FixedAsset record)
         {
-            //Triển khai thân hàm
-
-            return new ValidateResult
-            {
-                IsSucess = true
-            };
+            return new List<string>();
         }
 
 

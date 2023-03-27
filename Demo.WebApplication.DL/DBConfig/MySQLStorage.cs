@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace Demo.WebApplication.DL.DBConfig
 {
@@ -13,7 +14,7 @@ namespace Demo.WebApplication.DL.DBConfig
     {
         #region Field
 
-        private readonly string _connectionString = "server=localhost;database=misa.qlts_mf1566_nnduc;uid=root;pwd=;Old Guids=true;";
+        private readonly string _connectionString = DatabaseContext.ConnectionString;
 
         #endregion
 
@@ -35,7 +36,19 @@ namespace Demo.WebApplication.DL.DBConfig
             return cnn.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType);
         }
 
+        public GridReader QueryMultiple(IDbConnection cnn, string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        {
+            return cnn.QueryMultiple(sql, param, transaction, commandTimeout, commandType);
+        }
+
+        public T QueryFirstOrDefault<T>(IDbConnection cnn, string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        {
+            return cnn.QueryFirstOrDefault<T>(sql, param, transaction, commandTimeout, commandType);
+        }
+
+
         #endregion
 
     }
 }
+

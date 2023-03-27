@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DevMsg_DulicateCode" xml:space="preserve">
+    <value>Trùng mã</value>
+  </data>
   <data name="DevMsg_Exception" xml:space="preserve">
     <value>Catched an exception</value>
   </data>
+  <data name="DevMsg_Exception_DL" xml:space="preserve">
+    <value>Lỗi khi gọi vào DL</value>
+  </data>
+  <data name="DevMsg_Validate" xml:space="preserve">
+    <value>Người nhập dữ liệu không đúng</value>
+  </data>
   <data name="UserMsg_Exception" xml:space="preserve">
     <value>Có lỗi xảy ra. Vui lòng liên hệ trung tâm tư vấn!</value>
+  </data>
+  <data name="UserMsg_Validate" xml:space="preserve">
+    <value>Nhập dữ liệu không đúng</value>
+  </data>
+  <data name="UserMsg_ValidateId" xml:space="preserve">
+    <value>Nhập id không đúng</value>
   </data>
 </root>

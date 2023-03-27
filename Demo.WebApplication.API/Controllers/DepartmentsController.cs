@@ -1,20 +1,15 @@
 ﻿using Demo.WebApplication.API.lib;
+using Demo.WebApplication.BL.BaseBL;
+using Demo.WebApplication.Common.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.WebApplication.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class DepartmentsController : BaseController<Department>
     {
-        DBConfig db = new DBConfig();
-        [HttpGet]
-        public IActionResult GetDepartments()
+        public DepartmentsController(IBaseBL<Department> baseBL) : base(baseBL)
         {
-            string sql = $"select * from department";
-            var data = db.Departments(sql);
-            return StatusCode(200, data);
         }
     }
 }

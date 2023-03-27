@@ -15,6 +15,21 @@
         /// <summary>
         /// Trùng mã
         /// </summary>
-        DulicateCode=3
+        DulicateCode=3,
+
+        /// <summary>
+        /// Lỗi không thêm được
+        /// </summary>
+        InsertFailed = 4,
+
+        /// <summary>
+        /// Lỗi không sửa được
+        /// </summary>
+        UpdateFailed = 5,
+
+        /// <summary>
+        /// Lỗi không xoá được
+        /// </summary>
+        DeleteFailed = 6,
     }
 }

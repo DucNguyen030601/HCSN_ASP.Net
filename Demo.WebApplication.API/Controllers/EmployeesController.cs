@@ -2,6 +2,8 @@
 using Demo.WebApplication.Common.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace Demo.WebApplication.API.Controllers
 {
@@ -57,10 +59,23 @@ namespace Demo.WebApplication.API.Controllers
         [HttpPost]
         public IActionResult InsertEmployee([FromBody] Employee employee)
         {
+            List<string> val = new List<string>();
+            var validationResults = new List<ValidationResult>();
+            var validationContext = new ValidationContext(employee);
+
+            bool isValid = Validator.TryValidateObject(employee, validationContext, validationResults, true);
+            if (!isValid)
+            {
+                foreach (var validationResult in validationResults)
+                {
+                    val.Add(validationResult.ErrorMessage);
+                }
+            }
             return StatusCode(400, new
             {
                 Code = 1,
-                Message = "Trùng mã nhân viên"
+                Message = val,
+
             });
         }
     }

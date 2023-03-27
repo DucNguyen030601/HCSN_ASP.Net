@@ -1,4 +1,6 @@
 ﻿using Demo.WebApplication.Common.Entities;
+using Demo.WebApplication.Common.Entities.DTO;
+using Demo.WebApplication.DL.BaseDL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +9,9 @@ using System.Threading.Tasks;
 
 namespace Demo.WebApplication.DL.FixedAssetDL
 {
-    public interface IFixedAssetDL
+    public interface IFixedAssetDL: IBaseDL<FixedAsset>
     {
-        /// <summary>
-        /// Hàm thêm mới tài sản
-        /// </summary>
-        /// <param name="fixedAsset">đối tượng muốn thêm</param>
-        /// <returns>trả về 1: là thêm thành công
-        /// trả về 2: thất bại
-        /// </returns>
-        int InsertFixedAsset(FixedAsset fixedAsset);
+        PagingResult<FixedAsset> PagingResult();
 
-        /// <summary>
-        /// Hàm lấy danh sách bản ghi từ DB
-        /// </summary>
-        /// <returns>danh sách bản ghi cần lấy</returns>
-        List<FixedAsset> GetFixedAssetList();
     }
 }

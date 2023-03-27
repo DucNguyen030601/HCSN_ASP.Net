@@ -61,6 +61,15 @@ namespace Demo.WebApplication.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trùng mã.
+        /// </summary>
+        public static string DevMsg_DulicateCode {
+            get {
+                return ResourceManager.GetString("DevMsg_DulicateCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catched an exception.
         /// </summary>
         public static string DevMsg_Exception {
@@ -70,11 +79,47 @@ namespace Demo.WebApplication.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lỗi khi gọi vào DL.
+        /// </summary>
+        public static string DevMsg_Exception_DL {
+            get {
+                return ResourceManager.GetString("DevMsg_Exception_DL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Người nhập dữ liệu không đúng.
+        /// </summary>
+        public static string DevMsg_Validate {
+            get {
+                return ResourceManager.GetString("DevMsg_Validate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Có lỗi xảy ra. Vui lòng liên hệ trung tâm tư vấn!.
         /// </summary>
         public static string UserMsg_Exception {
             get {
                 return ResourceManager.GetString("UserMsg_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập dữ liệu không đúng.
+        /// </summary>
+        public static string UserMsg_Validate {
+            get {
+                return ResourceManager.GetString("UserMsg_Validate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập id không đúng.
+        /// </summary>
+        public static string UserMsg_ValidateId {
+            get {
+                return ResourceManager.GetString("UserMsg_ValidateId", resourceCulture);
             }
         }
     }

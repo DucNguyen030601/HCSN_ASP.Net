@@ -7,7 +7,7 @@ namespace Demo.WebApplication.Common.Entities.DTO
         /// <summary>
         /// thông tin mã code
         /// </summary>
-        public ErrorCode ErrorCode { get; set; }
+        public ErrorCode? ErrorCode { get; set; }
 
         /// <summary>
         /// Thông tin xử lý bên phía backend hoặc fontend

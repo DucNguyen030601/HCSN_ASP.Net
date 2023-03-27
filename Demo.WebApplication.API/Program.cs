@@ -1,6 +1,9 @@
+﻿using Demo.WebApplication.BL.BaseBL;
 using Demo.WebApplication.BL.FixedAssetBL;
+using Demo.WebApplication.DL.BaseDL;
 using Demo.WebApplication.DL.DBConfig;
 using Demo.WebApplication.DL.FixedAssetDL;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +21,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IStorage, MySQLStorage>();
 builder.Services.AddScoped<IFixedAssetBL,FixedAssetBL>();
 builder.Services.AddScoped<IFixedAssetDL, FixedAssetDL>();
+builder.Services.AddScoped(typeof(IBaseBL<>), typeof(BaseBL<>));
+builder.Services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL<>));
 
+//Connection string Database Context
+DatabaseContext.ConnectionString = builder.Configuration.GetConnectionString("MySql");
+
+//allow CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -27,6 +36,12 @@ builder.Services.AddCors(options =>
                       {
                           policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
                       });
+});
+
+//disabel automatic model state validation
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
 });
 
 var app = builder.Build();
