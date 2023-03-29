@@ -11,23 +11,42 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(string.Format(Son.tt, "BATMAN"));
+            /*Console.WriteLine(string.Format(Son.tt, "BATMAN"));
             Son son = new Son();
-            son.A("x");
-      /*      var a = new
-            {
-                Name = "Nguyễn Ngọc Đức"
-            };
+            son.A("x");*/
+            /*      var a = new
+                  {
+                      Name = "Nguyễn Ngọc Đức"
+                  };
 
-            Console.WriteLine(a.GetType().GetProperty("Name").GetValue(a, null));*/
+                  Console.WriteLine(a.GetType().GetProperty("Name").GetValue(a, null));*/
 
-          /*  string sort = "-modifiedDate";
-            var paramters = test(sort);
-            foreach (var arg in paramters)
+            /*  string sort = "-modifiedDate";
+              var paramters = test(sort);
+              foreach (var arg in paramters)
+              {
+                  Console.WriteLine(arg.Key + " - " + arg.Value);
+              }*/
+
+            var l = new List<object>();
+            l.Add(new
             {
-                Console.WriteLine(arg.Key + " - " + arg.Value);
-            }*/
+                a = 1 
+            });
+            Check(null);
             Console.ReadKey();
+        }
+        static void Check(int? s = 5)
+        {
+            if (s == null)
+            {
+                Console.WriteLine("This is null");
+            }
+            if (s == 5)
+            {
+                Console.WriteLine("This is empty");
+            }
+            
         }
 
         static Dictionary<string, string> test(string sort)

@@ -193,7 +193,7 @@ namespace Demo.WebApplication.BL.BaseBL
             return _baseDL.GetRecordsById(id);
         }
 
-        public PagingResult<T> GetPagingResult( int? page = 1, int? pageSize = 10, string? where="",string? sort = "")
+        public PagingResult GetPagingResult( int? page = 1, int? pageSize = 10, string? where="",string? sort = "")
         {
             return _baseDL.GetPagingResult( page, pageSize, where, sort);
         }
@@ -224,12 +224,12 @@ namespace Demo.WebApplication.BL.BaseBL
             }
 
             //kiểm tra xem có bị trùng mã không
-            string className = Functions.ConvertPascalCaseToUnderscore(typeof(T).Name);
+         /*   string className = Functions.ConvertPascalCaseToUnderscore(typeof(T).Name);
             string code = (string)Functions.GetPropValue(record, $"{className}_code");
             if (_baseDL.IsCodeExit(code) == true)
             {
                 result.Add("Mã code không được trùng");
-            }
+            }*/
 
             //Lấy thêm validation từ bản custom
             result.AddRange(ValidateCustom(record));

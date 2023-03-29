@@ -56,7 +56,12 @@ namespace Demo.WebApplication.API.Controllers
         {
             try
             {
-                return StatusCode(StatusCodes.Status200OK, _fixedAssetBL.GetNewCode());
+                var newCode = _fixedAssetBL.GetNewCode();
+                if (string.IsNullOrEmpty(newCode))
+                {
+                    return NotFound();
+                }
+                else return StatusCode(StatusCodes.Status200OK, newCode);
             }
             catch(Exception ex)
             {

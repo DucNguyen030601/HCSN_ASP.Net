@@ -11,7 +11,5 @@ namespace Demo.WebApplication.DL.FixedAssetDL
 {
     public interface IFixedAssetDL: IBaseDL<FixedAsset>
     {
-        PagingResult<FixedAsset> PagingResult();
-
     }
 }

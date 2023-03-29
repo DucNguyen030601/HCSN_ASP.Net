@@ -19,8 +19,8 @@ namespace Demo.WebApplication.DL.BaseDL
     {
         #region Field
 
-        private IStorage _storage;
-        private string className = Functions.ConvertPascalCaseToUnderscore(typeof(T).Name);
+        protected IStorage _storage;
+        protected string className = Functions.ConvertPascalCaseToUnderscore(typeof(T).Name);
 
         #endregion
 
@@ -76,12 +76,12 @@ namespace Demo.WebApplication.DL.BaseDL
         /// True -> có tồn tại
         /// False -> không tồn tại 
         /// </returns>
-        public bool IsCodeExit(string code, string id)
+        public bool IsCodeExit(string code, string? id=null)
         {
             int numberCodeExit = 0;
           
             //nếu id khác null => trạng thái thêm
-            if(id == null) numberCodeExit = NumberCodeExit(code);
+            if(string.IsNullOrEmpty(id)) numberCodeExit = NumberCodeExit(code);
             else
             {
                 //lấy code cũ (mặc định) ở bản ghi
@@ -95,7 +95,7 @@ namespace Demo.WebApplication.DL.BaseDL
                 //kết nối đến DB
                 using (var dbConnection = _storage.GetDbConnection())
                 {
-                    oldCode = _storage.QueryFirstOrDefault<string>(dbConnection, storedProcedure, commandType: CommandType.Text);
+                    oldCode = _storage.QueryFirstOrDefault<string>(dbConnection, storedProcedure,parameters, commandType: CommandType.StoredProcedure);
                 }
 
                 //nếu mã code cũ (mặc định) khác mã code ban đầu -> kiểm tra trùng mã
@@ -229,11 +229,10 @@ namespace Demo.WebApplication.DL.BaseDL
             //Số lượng bản ghi trùng
             int numberCodeExit;
 
-
             //kết nối đến DB
             using (var dbConnection = _storage.GetDbConnection())
             {
-                numberCodeExit = _storage.QueryFirstOrDefault<int>(dbConnection, storedProcedureName, commandType: CommandType.StoredProcedure);
+                numberCodeExit = _storage.QueryFirstOrDefault<int>(dbConnection, storedProcedureName,parameters, commandType: CommandType.StoredProcedure);
             }
             return numberCodeExit;
         }
@@ -269,7 +268,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// <param name="pageSize">số lượng bản ghi trong 1 trang</param>
         /// <param name="sort">sắp xếp</param>
         /// <returns>Trả về thông tin danh sách bản ghi và tổng số bản ghi có phân trang</returns>
-        public PagingResult<T> GetPagingResult(int? page = 1, int? pageSize = 10,string? where ="" ,string? sort = "")
+        public virtual PagingResult GetPagingResult(int? page = 1, int? pageSize = 10,string? where ="" ,string? sort = "")
         {
             string storedProcedureName = StoredProcedures.GetPaging;
             var parameters = new DynamicParameters();
@@ -278,11 +277,11 @@ namespace Demo.WebApplication.DL.BaseDL
             parameters.Add("@limit", pageSize);
             parameters.Add("@where", where);
             parameters.Add("@sort", sort);
-            PagingResult<T> pagingResult = new PagingResult<T>();
+            PagingResult pagingResult = new PagingResult();
             using (var dbConnection = _storage.GetDbConnection())
             {
                 var multipleResults = _storage.QueryMultiple(dbConnection, storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
-                pagingResult.Data = multipleResults.Read<T>().ToList();
+                pagingResult.Data = multipleResults.Read().ToList();
                 pagingResult.TotalPage = multipleResults.Read<int>().Single();
                 pagingResult.TotalRecord = multipleResults.Read<int>().Single();
             }

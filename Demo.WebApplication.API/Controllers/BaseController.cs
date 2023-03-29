@@ -4,6 +4,7 @@ using Demo.WebApplication.Common.Entities.DTO;
 using Demo.WebApplication.Common.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Session;
 using MySqlX.XDevAPI.Common;
 
 namespace Demo.WebApplication.API.Controllers
@@ -29,7 +30,7 @@ namespace Demo.WebApplication.API.Controllers
         #endregion
 
         [HttpPost]
-        public IActionResult InsertRecord(T record)
+        public IActionResult InsertRecord([FromBody]T record)
         {
             try
             {
@@ -97,7 +98,7 @@ namespace Demo.WebApplication.API.Controllers
 
                 if (result.IsSuccess)
                 {
-                    return StatusCode(StatusCodes.Status201Created);
+                    return StatusCode(StatusCodes.Status200OK);
                 }
                 else if (!result.IsSuccess && result.ErrorCode == ErrorCode.InvalidData)
                 {
@@ -157,7 +158,7 @@ namespace Demo.WebApplication.API.Controllers
 
                 if (result.IsSuccess)
                 {
-                    return StatusCode(StatusCodes.Status201Created);
+                    return StatusCode(StatusCodes.Status200OK);
                 }
                 else if (!result.IsSuccess && result.ErrorCode == ErrorCode.InvalidData)
                 {
@@ -194,6 +195,64 @@ namespace Demo.WebApplication.API.Controllers
                     TraceId = HttpContext.TraceIdentifier
                 });
 
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetRecordsById(string id)
+        {
+            try
+            {
+                var record = _baseBL.GetRecordsById(id);
+                if (record == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status200OK, record);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.Exception,
+                    DevMsg = Resource.DevMsg_Exception,
+                    UserMsg = Resource.UserMsg_Exception,
+                    MoreInfo = ex.Message,
+                    TraceId = HttpContext.TraceIdentifier
+                });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetRecords()
+        {
+            try
+            {
+                var records = _baseBL.GetRecords();
+                if (records.Count() == 0)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status200OK, records);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.Exception,
+                    DevMsg = Resource.DevMsg_Exception,
+                    UserMsg = Resource.UserMsg_Exception,
+                    MoreInfo = ex.Message,
+                    TraceId = HttpContext.TraceIdentifier
+                });
             }
         }
     }

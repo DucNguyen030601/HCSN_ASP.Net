@@ -13,5 +13,7 @@ namespace Demo.WebApplication.Common.Constants
         /// </summary>
         public const string View = "view_{0}";
 
+        public const string Name = "{0}";
+
     }
 }

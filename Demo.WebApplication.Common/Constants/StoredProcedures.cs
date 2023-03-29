@@ -48,6 +48,10 @@ namespace Demo.WebApplication.Common.Constants
         /// </summary>
         public const string GetPaging = "Proc_GetPaging";
 
+        /// <summary>
+        /// Procedure lấy thêm thông tin phân trang (VD: tổng số tiền,..)
+        /// </summary>
+        public const string MorePagingInfor = "Proc_{0}_MorePagingInfor";
 
     }
 }

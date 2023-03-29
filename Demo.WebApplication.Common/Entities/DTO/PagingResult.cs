@@ -3,12 +3,12 @@
     /// <summary>
     /// Thông tin phân trang
     /// </summary>
-    public class PagingResult<T>
+    public class PagingResult
     {
         /// <summary>
         /// Dữ liệu kết quả trả về
         /// </summary>
-        public List<T> Data { get; set; }
+        public object? Data { get; set; }
 
         /// <summary>
         /// Số lượng dữ liệu trả về
@@ -19,5 +19,7 @@
         /// Số lượng trang
         /// </summary>
         public int TotalPage { get; set; }
+
+        public object? MoreInfo { get; set; }
     }
 }

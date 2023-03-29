@@ -71,6 +71,6 @@ namespace Demo.WebApplication.BL.BaseBL
         /// <param name="pageSize">số lượng bản ghi trong 1 trang</param>
         /// <param name="sort">sắp xếp</param>
         /// <returns>Trả về thông tin danh sách bản ghi và tổng số bản ghi có phân trang</returns>
-        public PagingResult<T> GetPagingResult(int? page = 1, int? pageSize = 10,string? where="", string? sort = "");
+        public PagingResult GetPagingResult(int? page = 1, int? pageSize = 10,string? where="", string? sort = "");
     }
 }

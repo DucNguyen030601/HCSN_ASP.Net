@@ -8,7 +8,7 @@ namespace Test
 {
     internal class Son : Father
     {
-        public const string tt = "I am {0}"; 
+        public const string tt = "I am {0}";
         public Son(string name) : base(name)
         {
 

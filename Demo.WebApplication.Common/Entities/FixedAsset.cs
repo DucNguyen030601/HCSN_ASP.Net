@@ -126,6 +126,7 @@ namespace Demo.WebApplication.Common.Entities
         /// Ngày sửa
         /// </summary>
         public DateTime modified_date { get; set; } 
+        
         #endregion
     }
 }
