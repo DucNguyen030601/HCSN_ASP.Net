@@ -1,12 +1,17 @@
-﻿using Demo.WebApplication.BL.BaseBL;
+﻿
+using Demo.WebApplication.BL.BaseBL;
 using Demo.WebApplication.BL.FixedAssetBL;
+using Demo.WebApplication.BL.FixedAssetIncrementBL;
+using Demo.WebApplication.BL.FixedAssetIncrementDetailBL;
 using Demo.WebApplication.DL.BaseDL;
 using Demo.WebApplication.DL.DBConfig;
 using Demo.WebApplication.DL.FixedAssetDL;
+using Demo.WebApplication.DL.FixedAssetIncrementDetailDL;
+using Demo.WebApplication.DL.FixedAssetIncrementDL;
 using Microsoft.AspNetCore.Mvc;
 
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
             .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
 // Add services to the container.
@@ -21,6 +26,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IStorage, MySQLStorage>();
 builder.Services.AddScoped<IFixedAssetBL,FixedAssetBL>();
 builder.Services.AddScoped<IFixedAssetDL, FixedAssetDL>();
+builder.Services.AddScoped<IFixedAssetIncrementBL, FixedAssetIncrementBL>();
+builder.Services.AddScoped<IFixedAssetIncrementDL, FixedAssetIncrementDL>();
+builder.Services.AddScoped<IFixedAssetIncrementDetailBL, FixedAssetIncrementDetailBL>();
+builder.Services.AddScoped<IFixedAssetIncrementDetailDL, FixedAssetIncrementDetailDL>();
 builder.Services.AddScoped(typeof(IBaseBL<>), typeof(BaseBL<>));
 builder.Services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL<>));
 

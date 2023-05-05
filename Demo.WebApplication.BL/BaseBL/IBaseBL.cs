@@ -43,6 +43,14 @@ namespace Demo.WebApplication.BL.BaseBL
         /// Số bản ghi bị ảnh hưởng
         /// </returns>
         ServiceResult DeleteRecord(string entityId);
+        /// <summary>
+        /// Hàm xoá nhiều bản ghi
+        /// </summary>
+        /// <param name="entityId">Danh sách Mã id của thực thể cần xoá</param>
+        /// <returns>
+        /// Số bản ghi bị ảnh hưởng
+        /// </returns>
+        ServiceResult DeleteRecords(List<string> entityIds);
 
         /// <summary>
         /// Lấy danh sách tất cả các bản ghi
@@ -71,6 +79,17 @@ namespace Demo.WebApplication.BL.BaseBL
         /// <param name="pageSize">số lượng bản ghi trong 1 trang</param>
         /// <param name="sort">sắp xếp</param>
         /// <returns>Trả về thông tin danh sách bản ghi và tổng số bản ghi có phân trang</returns>
-        public PagingResult GetPagingResult(int? page = 1, int? pageSize = 10,string? where="", string? sort = "");
+        public PagingResult<P> GetPagingResult<P>(int? page = 1, int? pageSize = 10,string? where="", string? sort = "");
+
+        /// <summary>
+        /// Lấy thêm dữ liệu phân trang 
+        /// </summary>
+        /// <param name="page">trang muốn đến</param>
+        /// <param name="pageSize">số bản ghi trên 1 trang </param>
+        /// <param name="where">câu điều kiện</param>
+        /// <param name="sort">câu điều kiện sắp xếp</param>
+        /// <returns></returns>
+        public PagingResult<P> GetPagingResult<P, C>(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "");
+
     }
 }

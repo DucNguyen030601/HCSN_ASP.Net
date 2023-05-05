@@ -3,12 +3,12 @@
     /// <summary>
     /// Thông tin phân trang
     /// </summary>
-    public class PagingResult
+    public class PagingResult<T>
     {
         /// <summary>
         /// Dữ liệu kết quả trả về
         /// </summary>
-        public object? Data { get; set; }
+        public List<T> Data { get; set; }
 
         /// <summary>
         /// Số lượng dữ liệu trả về

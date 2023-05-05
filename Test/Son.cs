@@ -8,24 +8,21 @@ namespace Test
 {
     internal class Son : Father
     {
+        public string old;
         public const string tt = "I am {0}";
+
         public Son(string name) : base(name)
         {
-
         }
-        public Son()
+
+        X MyFunction<X, Y>(X x, Y y)
         {
-
+            return x;
         }
-        public void A(string x, string y)
-        {
-            Console.WriteLine("AAAA");
-            base.A(x);
-        }
-
         public override void B()
         {
-            throw new NotImplementedException();
+            base.Name = "a";
+            Console.WriteLine(Name);
         }
     }
 }

@@ -129,6 +129,75 @@
   <data name="DevMsg_Validate" xml:space="preserve">
     <value>Người nhập dữ liệu không đúng</value>
   </data>
+  <data name="FixedAsset_Cost_RangeRequired" xml:space="preserve">
+    <value>Nguyên giá nằm trong phạm vi từ 0 đến 100 triệu.</value>
+  </data>
+  <data name="FixedAsset_Cost_Required" xml:space="preserve">
+    <value>Nguyên giá không được để trống.</value>
+  </data>
+  <data name="FixedAsset_DepartmentCode_Required" xml:space="preserve">
+    <value>Mã phòng ban không được để trống.</value>
+  </data>
+  <data name="FixedAsset_DepartmentName_Required" xml:space="preserve">
+    <value>Tên phòng ban không được để trống.</value>
+  </data>
+  <data name="FixedAsset_DepreciationRate_RangeRequired" xml:space="preserve">
+    <value>Tỷ lệ hao mòn nằm trong phạm vi từ 0.001 đến 1.</value>
+  </data>
+  <data name="FixedAsset_DepreciationRate_Required" xml:space="preserve">
+    <value>Tỷ lệ hao mòn không được để trống.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCategoryCode_Required" xml:space="preserve">
+    <value>Mã loại tài sản không được để trống.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCategoryId_Required" xml:space="preserve">
+    <value>Id loại tài sản không được để trống.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCategoryName_Required" xml:space="preserve">
+    <value>Tên loại tài sản không được để trống.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCode_Regex" xml:space="preserve">
+    <value>^[A-Z]{2}[0-9]{5}$</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCode_RegexRequired" xml:space="preserve">
+    <value>Không đúng định dạng Mã tài sản (AA12345).</value>
+  </data>
+  <data name="FixedAsset_FixedAssetCode_Required" xml:space="preserve">
+    <value>Mã tài sản không được để trống.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetName_MaxLenghtRequired" xml:space="preserve">
+    <value>Tên tài sản không được vượt quá 200 ký tự.</value>
+  </data>
+  <data name="FixedAsset_FixedAssetName_Required" xml:space="preserve">
+    <value>Tên tài sản không được để trống.</value>
+  </data>
+  <data name="FixedAsset_LifeTime_RangeRequired" xml:space="preserve">
+    <value>Số năm sử dụng nằm trong khoảng từ 1 đến 50.</value>
+  </data>
+  <data name="FixedAsset_LifeTime_Required" xml:space="preserve">
+    <value>Số năm sử dụng không được để trống.</value>
+  </data>
+  <data name="FixedAsset_ProductionYear_Required" xml:space="preserve">
+    <value>Ngày sử dụng không được để trống.</value>
+  </data>
+  <data name="FixedAsset_PurchaseDate_Required" xml:space="preserve">
+    <value>Ngày mua không được để trống.</value>
+  </data>
+  <data name="FixedAsset_Quantity_RangeRequired" xml:space="preserve">
+    <value>Số lượng nằm trong phạm vi từ 0 đến 100.</value>
+  </data>
+  <data name="FixedAsset_Quantity_Required" xml:space="preserve">
+    <value>Số lượng không được để trống.</value>
+  </data>
+  <data name="FixedAsset_TrackedYear_RangeRequired" xml:space="preserve">
+    <value>Năm theo dõi nằm trong khoảng từ 2000 đến 2050.</value>
+  </data>
+  <data name="FixedAsset_TrackedYear_Required" xml:space="preserve">
+    <value>Năm theo dõi không được để trống.</value>
+  </data>
+  <data name="FixedAsset__DepartmentId_Required" xml:space="preserve">
+    <value>Id phòng ban không được để trống.</value>
+  </data>
   <data name="UserMsg_Exception" xml:space="preserve">
     <value>Có lỗi xảy ra. Vui lòng liên hệ trung tâm tư vấn!</value>
   </data>

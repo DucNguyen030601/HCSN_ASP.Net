@@ -9,14 +9,13 @@ namespace Test
     abstract class Father
     {
         protected string Name;
+      
         public Father(string name)
         {
+            Console.WriteLine("abc123456");
             Name = name;
         }
-        public Father()
-        {
 
-        }
         public  void A(string x)
         {
             Console.WriteLine("Hàm A của lớp cha");

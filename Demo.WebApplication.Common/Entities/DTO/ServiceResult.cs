@@ -25,7 +25,7 @@ namespace Demo.WebApplication.Common.Entities.DTO
         public object Data { get; set; }
 
         /// <summary>
-        /// Thông tin khi rõ hơn khi bật debug
+        /// Thông tin khi rõ hơn cho Dev
         /// </summary>
         public string Message { get; set; }
     }

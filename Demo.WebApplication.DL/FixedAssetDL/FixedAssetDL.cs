@@ -2,6 +2,7 @@
 using Demo.WebApplication.Common.Constants;
 using Demo.WebApplication.Common.Entities;
 using Demo.WebApplication.Common.Entities.DTO;
+using Demo.WebApplication.Common.Entities.DTO.FixedAsset;
 using Demo.WebApplication.DL.BaseDL;
 using Demo.WebApplication.DL.DBConfig;
 using System;
@@ -18,17 +19,5 @@ namespace Demo.WebApplication.DL.FixedAssetDL
         {
         }
 
-        public override PagingResult GetPagingResult(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "")
-        {
-            var pagingResult = base.GetPagingResult(page, pageSize, where, sort);
-            string storedProcedureName = string.Format(StoredProcedures.MorePagingInfor,className);
-            var parameters = new DynamicParameters();
-            parameters.Add("@where", where);
-            using (var dbConnection = _storage.GetDbConnection())
-            {
-                pagingResult.MoreInfo  = _storage.QueryFirstOrDefault<object>(dbConnection, storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
-            }
-            return pagingResult;
-        }
     }
 }

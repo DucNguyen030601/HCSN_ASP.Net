@@ -13,18 +13,24 @@ using Demo.WebApplication.DL.FixedAssetDL;
 using Demo.WebApplication.BL.FixedAssetBL;
 using MySql.Data.MySqlClient;
 using Demo.WebApplication.BL.BaseBL;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.Globalization;
+using Demo.WebApplication.Common.Entities.DTO.FixedAsset;
+using Demo.WebApplication.Common.Entities.DTO.FixedAssetIncrementDetail;
 
 namespace Demo.WebApplication.API.Controllers
 {
-    public class FixedAssetsController :BaseController<FixedAsset>
+    public class FixedAssetsController : BaseController<FixedAsset>
     {
-        IFixedAssetBL _fixedAssetBL;
+        private IFixedAssetBL _fixedAssetBL;
         public FixedAssetsController(IFixedAssetBL fixedAssetBL) : base(fixedAssetBL)
         {
             _fixedAssetBL = fixedAssetBL;
         }
+
         [HttpGet("Filter")]
-        public IActionResult GetPagingResult(int? page = 1, int? pageSize = 10,string? sort = "", string departmentName = "", string fixedAssetCategoryName = "", string filter = "" )
+        public IActionResult GetPagingResult(int? page = 1, int? pageSize = 10, string? sort = "", string departmentName = "", string fixedAssetCategoryName = "", string filter = "")
         {
             try
             {
@@ -34,7 +40,7 @@ namespace Demo.WebApplication.API.Controllers
                            "AND ( fixed_asset_name like '%{2}%' " +
                            "OR fixed_asset_code like '%{2}%')",
                            departmentName, fixedAssetCategoryName, filter);
-                return StatusCode(StatusCodes.Status200OK, _fixedAssetBL.GetPagingResult(page, pageSize, where, sort));
+                return StatusCode(StatusCodes.Status200OK, _fixedAssetBL.GetPagingResult<FixedAssetResult, FixedAssetMoreInfor>(page, pageSize, where, sort));
             }
             catch (Exception ex)
             {
@@ -48,22 +54,25 @@ namespace Demo.WebApplication.API.Controllers
                     TraceId = HttpContext.TraceIdentifier
                 });
             }
-
         }
-        
-        [HttpGet("NewFixedAssetCode")]
-        public IActionResult GetNewCode()
+
+        [HttpPost("IncrementFilter")]
+        public IActionResult GetPagingResult([FromBody] FixedAssetIdFilter fixedAssetIdFilter,int? page = 1, int? pageSize = 10, string? sort = "", string filter = "")
         {
             try
             {
-                var newCode = _fixedAssetBL.GetNewCode();
-                if (string.IsNullOrEmpty(newCode))
-                {
-                    return NotFound();
-                }
-                else return StatusCode(StatusCodes.Status200OK, newCode);
+                string stringInEntityIds = string.Join("','", fixedAssetIdFilter.inEntityIds);
+                string stringNotInEntityIds = string.Join("','", fixedAssetIdFilter.notInEntityIds);
+                string where = string.Format("" +
+                           "((active = 0 " +
+                           "AND fixed_asset_id NOT IN ('{0}')) " +
+                           "OR fixed_asset_id IN ('{1}')) " +
+                           "AND ( fixed_asset_name like '%{2}%' " +
+                           "OR fixed_asset_code like '%{2}%')",
+                           stringNotInEntityIds, stringInEntityIds, filter);
+                return StatusCode(StatusCodes.Status200OK, _fixedAssetBL.GetPagingResult<FixedAssetResult, FixedAssetIncrementDetailMoreInfor>(page, pageSize, where, sort));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
@@ -76,5 +85,62 @@ namespace Demo.WebApplication.API.Controllers
                 });
             }
         }
+
+        [HttpGet("NewFixedAssetCode")]
+        public IActionResult GetNewCode()
+        {
+            try
+            {
+                var newCode = _fixedAssetBL.GetNewCode();
+                if (string.IsNullOrEmpty(newCode))
+                {
+                    return NotFound();
+                }
+                else return StatusCode(StatusCodes.Status200OK, newCode);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.Exception,
+                    DevMsg = Resource.DevMsg_Exception,
+                    UserMsg = Resource.UserMsg_Exception,
+                    MoreInfo = ex.Message,
+                    TraceId = HttpContext.TraceIdentifier
+                });
+            }
+        }
+
+        [HttpPost("ExportExcel")]
+        public IActionResult ExportExcel(string? sort = "", string departmentName = "", string fixedAssetCategoryName = "", string filter = "")
+        {
+            try
+            {
+                string where = string.Format("" +
+                               "department_name like '%{0}%' " +
+                               "AND fixed_asset_category_name like '%{1}%' " +
+                               "AND ( fixed_asset_name like '%{2}%' " +
+                               "OR fixed_asset_code like '%{2}%')",
+                               departmentName, fixedAssetCategoryName, filter);
+                var stream = _fixedAssetBL.ExportExcel(sort, where);
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                var fileName = "Danh_Sach_Tai_San.xlsx";
+                return File(stream, contentType, fileName);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
+                {
+                    ErrorCode = ErrorCode.Exception,
+                    DevMsg = Resource.DevMsg_Exception,
+                    UserMsg = Resource.UserMsg_Exception,
+                    MoreInfo = ex.Message,
+                    TraceId = HttpContext.TraceIdentifier
+                });
+            }
+        }
+
+
     }
 }

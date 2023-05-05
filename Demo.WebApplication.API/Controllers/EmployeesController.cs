@@ -11,6 +11,11 @@ namespace Demo.WebApplication.API.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase//ke thua 
     {
+        [HttpGet("TEST")]
+        public string TEST([FromBody] List<string> strings)
+        {
+            return string.Join(",",strings);
+        }
 
         /// <summary>
         /// lấy mã nhân viên
@@ -50,7 +55,7 @@ namespace Demo.WebApplication.API.Controllers
                 EmployeeName = "Nguyễn Ngọc Đức",
             } });
         }
-         
+
         /// <summary>
         /// 
         /// </summary>
@@ -68,15 +73,29 @@ namespace Demo.WebApplication.API.Controllers
             {
                 foreach (var validationResult in validationResults)
                 {
-                    val.Add(validationResult.ErrorMessage);
+                    
+                    val.Add(validationResult.ErrorMessage??string.Empty);
                 }
             }
             return StatusCode(400, new
             {
                 Code = 1,
-                Message = val,
 
+                Message = val,
+                Data = employee.EmployeeName
             });
+        }
+        [HttpDelete]
+        public IActionResult Delete([FromBody] List<string> ids)
+        {
+            string combinedString = string.Join(",", ids);
+            return StatusCode(200, combinedString);
+        }
+
+        [HttpDelete("{entityID}")]
+        public IActionResult Delete(string entityID )
+        {
+            return StatusCode(200, entityID);
         }
     }
 }

@@ -15,7 +15,7 @@
         /// <summary>
         /// Trùng mã
         /// </summary>
-        DulicateCode=3,
+        DuplicateCode=3,
 
         /// <summary>
         /// Lỗi không thêm được
@@ -31,5 +31,10 @@
         /// Lỗi không xoá được
         /// </summary>
         DeleteFailed = 6,
+        
+        /// <summary>
+        /// Lỗi xoá phát sinh
+        /// </summary>
+        DeleteArised = 7
     }
 }

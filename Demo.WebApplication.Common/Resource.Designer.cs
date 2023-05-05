@@ -97,6 +97,213 @@ namespace Demo.WebApplication.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id phòng ban không được để trống..
+        /// </summary>
+        public static string FixedAsset__DepartmentId_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset__DepartmentId_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nguyên giá nằm trong phạm vi từ 0 đến 100 triệu..
+        /// </summary>
+        public static string FixedAsset_Cost_RangeRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_Cost_RangeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nguyên giá không được để trống..
+        /// </summary>
+        public static string FixedAsset_Cost_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_Cost_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã phòng ban không được để trống..
+        /// </summary>
+        public static string FixedAsset_DepartmentCode_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_DepartmentCode_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên phòng ban không được để trống..
+        /// </summary>
+        public static string FixedAsset_DepartmentName_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_DepartmentName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tỷ lệ hao mòn nằm trong phạm vi từ 0.001 đến 1..
+        /// </summary>
+        public static string FixedAsset_DepreciationRate_RangeRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_DepreciationRate_RangeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tỷ lệ hao mòn không được để trống..
+        /// </summary>
+        public static string FixedAsset_DepreciationRate_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_DepreciationRate_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã loại tài sản không được để trống..
+        /// </summary>
+        public static string FixedAsset_FixedAssetCategoryCode_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCategoryCode_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id loại tài sản không được để trống..
+        /// </summary>
+        public static string FixedAsset_FixedAssetCategoryId_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCategoryId_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên loại tài sản không được để trống..
+        /// </summary>
+        public static string FixedAsset_FixedAssetCategoryName_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCategoryName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^[A-Z]{2}[0-9]{5}$.
+        /// </summary>
+        public static string FixedAsset_FixedAssetCode_Regex {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCode_Regex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không đúng định dạng Mã tài sản (AA12345)..
+        /// </summary>
+        public static string FixedAsset_FixedAssetCode_RegexRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCode_RegexRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã tài sản không được để trống..
+        /// </summary>
+        public static string FixedAsset_FixedAssetCode_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetCode_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên tài sản không được vượt quá 200 ký tự..
+        /// </summary>
+        public static string FixedAsset_FixedAssetName_MaxLenghtRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetName_MaxLenghtRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên tài sản không được để trống..
+        /// </summary>
+        public static string FixedAsset_FixedAssetName_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_FixedAssetName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số năm sử dụng nằm trong khoảng từ 1 đến 50..
+        /// </summary>
+        public static string FixedAsset_LifeTime_RangeRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_LifeTime_RangeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số năm sử dụng không được để trống..
+        /// </summary>
+        public static string FixedAsset_LifeTime_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_LifeTime_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngày sử dụng không được để trống..
+        /// </summary>
+        public static string FixedAsset_ProductionYear_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_ProductionYear_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngày mua không được để trống..
+        /// </summary>
+        public static string FixedAsset_PurchaseDate_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_PurchaseDate_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng nằm trong phạm vi từ 0 đến 100..
+        /// </summary>
+        public static string FixedAsset_Quantity_RangeRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_Quantity_RangeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng không được để trống..
+        /// </summary>
+        public static string FixedAsset_Quantity_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_Quantity_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Năm theo dõi nằm trong khoảng từ 2000 đến 2050..
+        /// </summary>
+        public static string FixedAsset_TrackedYear_RangeRequired {
+            get {
+                return ResourceManager.GetString("FixedAsset_TrackedYear_RangeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Năm theo dõi không được để trống..
+        /// </summary>
+        public static string FixedAsset_TrackedYear_Required {
+            get {
+                return ResourceManager.GetString("FixedAsset_TrackedYear_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Có lỗi xảy ra. Vui lòng liên hệ trung tâm tư vấn!.
         /// </summary>
         public static string UserMsg_Exception {

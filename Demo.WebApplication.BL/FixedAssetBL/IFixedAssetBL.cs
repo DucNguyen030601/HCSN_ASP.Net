@@ -11,6 +11,6 @@ namespace Demo.WebApplication.BL.FixedAssetBL
 {
     public interface IFixedAssetBL:IBaseBL<FixedAsset>
     {
-
+        MemoryStream ExportExcel(string? sort = "",string? where=""); 
     }
 }

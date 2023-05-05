@@ -14,14 +14,29 @@ namespace Demo.WebApplication.Common.Constants
         public const string Insert = "Proc_{0}_Insert";
 
         /// <summary>
+        /// Procedure thêm nhiều bản ghi
+        /// </summary>
+        public const string InsertMultiple = "Proc_{0}_InsertMultiple";
+
+        /// <summary>
         /// Procedure cập nhật bản ghi
         /// </summary>
         public const string Update = "Proc_{0}_Update";
 
         /// <summary>
+        /// Procedure sửa nhiều bản ghi
+        /// </summary>
+        public const string UpdateMultiple = "Proc_{0}_UpdateMultiple";
+
+        /// <summary>
         /// Procedure xoá bản ghi
         /// </summary>
         public const string Delete = "Proc_{0}_Delete";
+
+        /// <summary>
+        /// Procedure xoá nhiều bản ghi
+        /// </summary>
+        public const string DeleteMultiple = "Proc_{0}_DeleteMultiple";
 
         /// <summary>
         /// Procedure lấy bản ghi theo id
@@ -53,5 +68,9 @@ namespace Demo.WebApplication.Common.Constants
         /// </summary>
         public const string MorePagingInfor = "Proc_{0}_MorePagingInfor";
 
+        /// <summary>
+        /// Procedure lấy danh sách bản ghi theo danh sách id
+        /// </summary>
+        public const string GetRecordsByIds = "Proc_{0}_GetById";
     }
 }
