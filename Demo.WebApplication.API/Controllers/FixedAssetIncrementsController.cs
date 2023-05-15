@@ -19,7 +19,17 @@ namespace Demo.WebApplication.API.Controllers
         {
             _fixedAssetIncrementBL = fixedAssetIncrementBL;
         }
-
+        /// <summary>
+        /// Lấy danh sách chứng từ theo bộ lọc
+        /// </summary>
+        /// <param name="page">trang muốn lấy</param>
+        /// <param name="pageSize">số lượng bản ghi trên 1 trang</param>
+        /// <param name="sort">sắp xếp</param>
+        /// <param name="departmentName">tìm kiếm theo tên phòng ban</param>
+        /// <param name="fixedAssetCategoryName">tìm kiếm theo tên bộ phận sử dụng</param>
+        /// <param name="filter">tìm kiếm theo mã ghi tăng or nội dung</param>
+        /// <returns>danh sách bản ghi</returns>
+        /// Author: NNDuc (30/4/2023)
         [HttpGet("Filter")]
         public IActionResult GetPagingResult(int? page = 1, int? pageSize = 10, string? sort = "", string filter = "")
         {
@@ -44,6 +54,11 @@ namespace Demo.WebApplication.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy mã code mới
+        /// </summary>
+        /// <returns>Mã code</returns>
+        /// Author NNduc (15/4/2023)
         [HttpGet("NewFixedAssetIncrementCode")]
         public IActionResult GetNewCode()
         {

@@ -59,7 +59,7 @@ namespace Demo.WebApplication.Common.Entities.DTO.FixedAsset
         /// <summary>
         /// Sử dụng
         /// </summary>
-        public bool active { get; set; }
+        public string? status { get; set; }
 
         /// <summary>
         /// mã ghi tăng

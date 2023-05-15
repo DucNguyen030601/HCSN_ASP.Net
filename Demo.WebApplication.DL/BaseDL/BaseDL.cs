@@ -177,7 +177,7 @@ namespace Demo.WebApplication.DL.BaseDL
         public virtual bool DeleteRecords(List<string> entityIds)
         {
             string entityIdString = "'" + string.Join("','", entityIds) + "'";
-            int countRecord = entityIds.Count;
+            int countRecord = entityIds.Count;//số lượng id
             int numberAffectedRow;
             //Chuẩn bị tham số đầu vào cho stored
             string storedProcedureName = string.Format(StoredProcedures.DeleteMultiple, className);
@@ -188,12 +188,13 @@ namespace Demo.WebApplication.DL.BaseDL
 
             using (var dbConnection = _storage.GetDbConnection())
             {
-
                 using (var dbTrancation = _storage.GetDbTransaction(dbConnection))
                 {
                     try
                     {
                         numberAffectedRow = _storage.Execute(dbConnection, storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
+                        //nếu số lượng bản ghi ảnh hưởng khác số lượng id
+                        throw new NotImplementedException();
                         if (numberAffectedRow != countRecord) { _storage.Rollback(dbTrancation); return false; }
                         _storage.Commit(dbTrancation);
                         return true;

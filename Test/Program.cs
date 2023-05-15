@@ -65,7 +65,8 @@ namespace Test
             /*CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
             var a = 1456.ToString("N").Replace(",", ".").Replace(".00", "").Replace(",", ".");
             Console.WriteLine(a);*/
-            //Console.WriteLine(GetNewCode());
+            decimal a = 999999999999999999;
+            Console.WriteLine(a);
             Console.ReadKey();
         }
 

@@ -28,7 +28,17 @@ namespace Demo.WebApplication.API.Controllers
         {
             _fixedAssetBL = fixedAssetBL;
         }
-
+        /// <summary>
+        /// Lấy danh sách tài sản theo bộ lọc
+        /// </summary>
+        /// <param name="page">trang muốn lấy</param>
+        /// <param name="pageSize">số lượng bản ghi trên 1 trang</param>
+        /// <param name="sort">sắp xếp</param>
+        /// <param name="departmentName">tìm kiếm theo tên phòng ban</param>
+        /// <param name="fixedAssetCategoryName">tìm kiếm theo tên bộ phận sử dụng</param>
+        /// <param name="filter">tìm kiếm theo mã tài sản or tên tài sản</param>
+        /// <returns>danh sách bản ghi</returns>
+        /// Author: NNDuc (30/4/2023)
         [HttpGet("Filter")]
         public IActionResult GetPagingResult(int? page = 1, int? pageSize = 10, string? sort = "", string departmentName = "", string fixedAssetCategoryName = "", string filter = "")
         {
@@ -56,6 +66,17 @@ namespace Demo.WebApplication.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy danh sách tài sản theo bộ lọc
+        /// </summary>
+        /// <param name="page">trang muốn lấy</param>
+        /// <param name="pageSize">số lượng bản ghi trên 1 trang</param>
+        /// <param name="sort">sắp xếp</param>
+        /// <param name="departmentName">tìm kiếm theo tên phòng ban</param>
+        /// <param name="fixedAssetCategoryName">tìm kiếm theo tên bộ phận sử dụng</param>
+        /// <param name="filter">tìm kiếm theo mã tài sản or tên tài sản</param>
+        /// <returns>danh sách bản ghi</returns>
+        /// Author: NNDuc (30/4/2023)
         [HttpPost("IncrementFilter")]
         public IActionResult GetPagingResult([FromBody] FixedAssetIdFilter fixedAssetIdFilter,int? page = 1, int? pageSize = 10, string? sort = "", string filter = "")
         {
@@ -64,7 +85,7 @@ namespace Demo.WebApplication.API.Controllers
                 string stringInEntityIds = string.Join("','", fixedAssetIdFilter.inEntityIds);
                 string stringNotInEntityIds = string.Join("','", fixedAssetIdFilter.notInEntityIds);
                 string where = string.Format("" +
-                           "((active = 0 " +
+                           "((fixed_asset_increment_code IS NULL " +
                            "AND fixed_asset_id NOT IN ('{0}')) " +
                            "OR fixed_asset_id IN ('{1}')) " +
                            "AND ( fixed_asset_name like '%{2}%' " +
@@ -86,6 +107,11 @@ namespace Demo.WebApplication.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy mã code mới
+        /// </summary>
+        /// <returns>Mã code</returns>
+        /// Author NNduc (15/4/2023)
         [HttpGet("NewFixedAssetCode")]
         public IActionResult GetNewCode()
         {
@@ -112,6 +138,17 @@ namespace Demo.WebApplication.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Xuất file Excel
+        /// </summary>
+        /// <param name="page">trang muốn lấy</param>
+        /// <param name="pageSize">số lượng bản ghi trên 1 trang</param>
+        /// <param name="sort">sắp xếp</param>
+        /// <param name="departmentName">tìm kiếm theo tên phòng ban</param>
+        /// <param name="fixedAssetCategoryName">tìm kiếm theo tên bộ phận sử dụng</param>
+        /// <param name="filter">tìm kiếm theo mã tài sản or tên tài sản</param>
+        /// <returns>danh sách bản ghi</returns>
+        /// Author: NNDuc (30/4/2023)
         [HttpPost("ExportExcel")]
         public IActionResult ExportExcel(string? sort = "", string departmentName = "", string fixedAssetCategoryName = "", string filter = "")
         {

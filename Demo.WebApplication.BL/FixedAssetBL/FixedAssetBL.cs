@@ -55,8 +55,8 @@ namespace Demo.WebApplication.BL.FixedAssetBL
         /// Author NNduc(4/4/2023)
         public MemoryStream ExportExcel(string? sort = "", string? where = "")
         {
-            var data = GetPagingResult<FixedAssetResult>(0, -1, where, sort).Data;
-            var moreData = (FixedAssetMoreInfor)GetPagingResult<FixedAssetResult>(0, -1, where, sort).MoreInfo;
+            var data = GetPagingResult<FixedAssetResult,FixedAssetMoreInfor>(0, -1, where, sort).Data;
+            var moreData = (FixedAssetMoreInfor)GetPagingResult<FixedAssetResult, FixedAssetMoreInfor>(0, -1, where, sort).MoreInfo;
             var stream = new MemoryStream();
             using (var package = new ExcelPackage(stream))
             {
@@ -146,7 +146,7 @@ namespace Demo.WebApplication.BL.FixedAssetBL
         protected override List<string> ValidateDeleteRecord(string entityId)
         {
             var result = new List<string>();
-            var pagingResult = _fixedAssetDL.GetPagingResult<FixedAssetResult>(where: $"fixed_asset_id = '{entityId.Trim()}' AND active = 1");
+            var pagingResult = _fixedAssetDL.GetPagingResult<FixedAssetResult>(where: $"fixed_asset_id = '{entityId.Trim()}' AND fixed_asset_increment_code IS NOT NULL");
             var data = pagingResult.Data;
             if (data.Count() > 0)
             {
@@ -164,9 +164,10 @@ namespace Demo.WebApplication.BL.FixedAssetBL
         /// Author: NNduc (4/5/2023)
         protected override List<string> ValidateDeleteRecords(List<string> entityIds)
         {
+            entityIds = TrimStringElements(entityIds);
             var result = new List<string>();
-            string entityIdString = "'" + string.Join("','", entityIds.Select(s => s.Trim()).ToList()) + "'";
-            var pagingResult = _fixedAssetDL.GetPagingResult<FixedAsset>(where: $"fixed_asset_id IN ({entityIdString}) AND active = 1");
+            string entityIdString = "'" + string.Join("','",entityIds) + "'";
+            var pagingResult = _fixedAssetDL.GetPagingResult<FixedAsset>(where: $"fixed_asset_id IN ({entityIdString}) AND fixed_asset_increment_code IS NOT NULL");
             var data = pagingResult.Data;
             if (data.Count() > 0)
             {
