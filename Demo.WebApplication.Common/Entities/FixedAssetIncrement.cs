@@ -1,11 +1,5 @@
 ﻿using Demo.WebApplication.Common.BaseVA;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ValidationAttributeEnum = Demo.WebApplication.Common.Enums.ValidationAttribute;
-using ValidationAttributeResoure = Demo.WebApplication.Common.Resources.ValidationAttribute;
 
 namespace Demo.WebApplication.Common.Entities
 {
@@ -20,7 +14,7 @@ namespace Demo.WebApplication.Common.Entities
         /// Mã ghi tăng tài sản
         /// </summary>
         [BaseRequired()]
-        [BaseMaxLength(ValidationAttributeEnum.FixedAssetIncrement.MaxLenghtFixedAssetIncrementCode)]
+        [BaseMaxLength(ValidationAttributeEnum.FixedAssetIncrement.MaxLengthFixedAssetIncrementCode)]
         public string? fixed_asset_increment_code {get;set;}
 
         /// <summary>
@@ -38,6 +32,7 @@ namespace Demo.WebApplication.Common.Entities
         /// <summary>
         /// Ghi chú
         /// </summary>
+        [BaseMaxLength(ValidationAttributeEnum.FixedAssetIncrement.MaxLengthDescription)]
         public string? description {get;set;}
 
         /// <summary>

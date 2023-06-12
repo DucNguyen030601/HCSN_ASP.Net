@@ -105,7 +105,5 @@ namespace Demo.WebApplication.DL.BaseDL
         /// <param name="sort">câu điều kiện sắp xếp</param>
         /// <returns></returns>
         public PagingResult<P> GetPagingResult<P, C>(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "");
-
-    
     }
 }

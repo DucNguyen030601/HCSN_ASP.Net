@@ -10,9 +10,9 @@ namespace Demo.WebApplication.Common.Enums
     {
         public struct FixedAsset
         {
-            public const int MaxLenghtFixedAssetCode = 100;
+            public const int MaxLengthFixedAssetCode = 100;
 
-            public const int MaxLenghtFixedAssetName = 255;
+            public const int MaxLengthFixedAssetName = 255;
 
             public const decimal RangeMinCost = 1;
 
@@ -36,7 +36,8 @@ namespace Demo.WebApplication.Common.Enums
         }
         public struct FixedAssetIncrement
         {
-            public const int MaxLenghtFixedAssetIncrementCode = 100;
+            public const int MaxLengthFixedAssetIncrementCode = 100;
+            public const int MaxLengthDescription = 255;
         }
 
 

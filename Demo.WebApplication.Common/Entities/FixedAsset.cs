@@ -1,10 +1,7 @@
 ﻿
 
 using Demo.WebApplication.Common.BaseVA;
-using Demo.WebApplication.Common.Enums;
-using System.ComponentModel.DataAnnotations;
 using ValidationAttributeEnum = Demo.WebApplication.Common.Enums.ValidationAttribute;
-using ValidationAttributeResoure = Demo.WebApplication.Common.Resources.ValidationAttribute;
 
 namespace Demo.WebApplication.Common.Entities
 {
@@ -23,14 +20,14 @@ namespace Demo.WebApplication.Common.Entities
         ///Mã tài sản
         /// </summary>
         [BaseRequired()]
-        [BaseMaxLength(ValidationAttributeEnum.FixedAsset.MaxLenghtFixedAssetCode)]
+        [BaseMaxLength(ValidationAttributeEnum.FixedAsset.MaxLengthFixedAssetCode)]
         public string? fixed_asset_code { get; set; }
 
         /// <summary>
         /// Tên tài sản
         /// </summary>
         [BaseRequired()]
-        [BaseMaxLength(ValidationAttributeEnum.FixedAsset.MaxLenghtFixedAssetName)]
+        [BaseMaxLength(ValidationAttributeEnum.FixedAsset.MaxLengthFixedAssetName)]
         public string? fixed_asset_name { get; set; }
 
         /// <summary>

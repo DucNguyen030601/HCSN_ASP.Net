@@ -80,6 +80,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// True -> có tồn tại
         /// False -> không tồn tại 
         /// </returns>
+        /// Created by: NNduc(21/03/2023)
         public bool IsCodeExist(string code, string? id = "")
         {
             int numberCodeExits = 0;
@@ -145,6 +146,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// <returns>
         /// Số bản ghi bị ảnh hưởng
         /// </returns>
+        /// Created by: NNduc(21/03/2023)
         public virtual int DeleteRecord(string entityId)
         {
             //Chuẩn bị tham số đầu vào cho stored
@@ -213,6 +215,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// Hàm lấy ra mã code mới
         /// </summary>
         /// <returns>Mã code cần lấy</returns>
+        /// Created by: NNduc(21/03/2023)
         public string GetNewCode()
         {
             string storedProcedureName = StoredProcedures.GetNewCode;
@@ -232,6 +235,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// Lấy danh sách tất cả các bản ghi
         /// </summary>
         /// <returns>Danh sách</returns>
+        /// Created by: NNduc(21/03/2023)
         public List<T> GetRecords()
         {
             //chuẩn bị tên view
@@ -275,6 +279,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// </summary>
         /// <param name="id">id bản ghi muốn lấy</param>
         /// <returns>Bản ghi thoả mãn điều kiện</returns>
+        /// Created by: NNduc(21/03/2023)
         public T GetRecordsById(string id)
         {
             string storedProcedureName = string.Format(StoredProcedures.GetById);
@@ -301,7 +306,8 @@ namespace Demo.WebApplication.DL.BaseDL
         /// <param name="pageSize">số lượng bản ghi trong 1 trang</param>
         /// <param name="sort">sắp xếp</param>
         /// <returns>Trả về thông tin danh sách bản ghi và tổng số bản ghi có phân trang</returns>
-        public  PagingResult<P> GetPagingResult<P>(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "")
+        /// Created by: NNduc(21/03/2023)
+        public PagingResult<P> GetPagingResult<P>(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "")
         {
             string storedProcedureName = StoredProcedures.GetPaging;
             var parameters = new DynamicParameters();
@@ -329,6 +335,7 @@ namespace Demo.WebApplication.DL.BaseDL
         /// <param name="where">câu điều kiện</param>
         /// <param name="sort">câu điều kiện sắp xếp</param>
         /// <returns></returns>
+        /// Created by: NNduc(21/03/2023)
         public PagingResult<P> GetPagingResult<P,C>(int? page = 1, int? pageSize = 10, string? where = "", string? sort = "")
         {
             var pagingResult = GetPagingResult<P>(page, pageSize, where, sort);
