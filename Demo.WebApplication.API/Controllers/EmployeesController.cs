@@ -7,6 +7,9 @@ using System;
 
 namespace Demo.WebApplication.API.Controllers
 {
+    /// <summary>
+    /// Nguyễn Ngọc đức
+    /// </summary>
     [Route("api/employees")]//attribute
     [ApiController]
     public class EmployeesController : ControllerBase//ke thua 
