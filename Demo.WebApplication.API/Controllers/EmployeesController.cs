@@ -60,7 +60,7 @@ namespace Demo.WebApplication.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Thêm nhân viên mới
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
