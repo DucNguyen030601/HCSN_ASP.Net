@@ -72,6 +72,14 @@ namespace Demo.WebApplication.API.Controllers
             var validationContext = new ValidationContext(employee);
 
             bool isValid = Validator.TryValidateObject(employee, validationContext, validationResults, true);
+            if (!isValid)
+            {
+                foreach (var validationResult in validationResults)
+                {
+
+                    val.Add(validationResult.ErrorMessage ?? string.Empty);
+                }
+            }
             return StatusCode(400, new
             {
                 Code = 1,
